@@ -10,6 +10,7 @@
 #pragma link C++ class StHbtBaseAnalysis+;
 #pragma link C++ class StHbtTrackCut+;
 #pragma link C++ class StHbtCorrFctn+;
+#pragma link C++ class StHbtCorrFctn3DLCMSSym+;
 #pragma link C++ class StHbtCoulomb+;
 #pragma link C++ class StHbtCutMonitor+;
 #pragma link C++ class StHbtCutMonitorHandler+;

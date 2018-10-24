@@ -35,8 +35,8 @@ class StHbtCorrFctn3DLCMSSym : public StHbtCorrFctn {
   virtual ~StHbtCorrFctn3DLCMSSym();
 
   virtual StHbtString report();
-  virtual void addRealPair(StHbtPair* aPair);
-  virtual void addMixedPair(StHbtPair* aPair);
+  virtual void addRealPair(const StHbtPair* aPair);
+  virtual void addMixedPair(const StHbtPair* aPair);
 
   virtual void finish();
 

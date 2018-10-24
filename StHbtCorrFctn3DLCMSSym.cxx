@@ -156,7 +156,7 @@ StHbtString StHbtCorrFctn3DLCMSSym::report() {
 }
 
 //_________________
-void StHbtCorrFctn3DLCMSSym::addRealPair(StHbtPair* pair) {
+void StHbtCorrFctn3DLCMSSym::addRealPair(const StHbtPair* pair) {
   /// Perform operations on real pairs
   if ( mPairCut && !mPairCut->pass( pair ) ) {
     return;
@@ -174,7 +174,7 @@ void StHbtCorrFctn3DLCMSSym::addRealPair(StHbtPair* pair) {
 }
 
 //____________________________
-void StHbtCorrFctn3DLCMSSym::addMixedPair(StHbtPair* pair) {
+void StHbtCorrFctn3DLCMSSym::addMixedPair(const StHbtPair* pair) {
   
   /// Perform operations on mixed pairs
   if ( mPairCut && !mPairCut->pass(pair) ) {

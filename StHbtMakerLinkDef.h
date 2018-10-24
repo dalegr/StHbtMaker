@@ -7,6 +7,8 @@
 /// Main StHbtMaker classes
 #pragma link C++ class StHbtMaker+;
 #pragma link C++ class StHbtAnalysis+;
+#pragma link C++ class StHbtBaseAnalysis+;
+#pragma link C++ class StHbtTrackCut+;
 #pragma link C++ class StHbtCorrFctn+;
 #pragma link C++ class StHbtCoulomb+;
 #pragma link C++ class StHbtCutMonitor+;

@@ -70,6 +70,11 @@ void StHbtCutMonitor::fill(const StHbtParticleCollection*,
 }
 
 //_________________
+void StHbtCutMonitor::fill(const StHbtEvent*,const StHbtParticleCollection*) {
+  /* empty */
+}
+
+//_________________
 void StHbtCutMonitor::finish() { 
   /* empty */
 }

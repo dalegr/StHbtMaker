@@ -528,8 +528,8 @@ double StHbtPair::nominalTpcAverageSeparation() const {
 	    TMath::Abs( mTrack2->nominalPosSampleY()[ipt] ) < 9999. && 
 	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. ) {
       
-      ipt++;
       AveSep += ( mTrack1->nominalPosSample(ipt) - mTrack2->nominalPosSample(ipt) ).Mag();
+      ipt++;
     }
     AveSep = AveSep / (ipt+1.);
   }

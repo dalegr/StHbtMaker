@@ -18,6 +18,7 @@
 #pragma link C++ class StHbtEventReader+;
 #pragma link C++ class StHbtBasicEventCut+;
 #pragma link C++ class StHbtBasicTrackCut+;
+#pragma link C++ class StHbtBasicPairCut+;
 //#pragma link C++ class StHbtFsiWeight+;
 #pragma link C++ class StHbtKink+;
 #pragma link C++ class StHbtLikeSignAnalysis+;

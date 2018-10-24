@@ -22,6 +22,7 @@ ClassImp(StHbtBasicEventCut);
 //_________________
 StHbtBasicEventCut::StHbtBasicEventCut():
   StHbtEventCut(),
+  mCheckBadRun(true),
   mRefMult(),
   mVertZPos(),
   mVpdVzDiff(),
@@ -66,6 +67,7 @@ StHbtBasicEventCut::StHbtBasicEventCut(const StHbtBasicEventCut& c):
   mNEventsPassed(0),
   mNEventsFailed(0) {
   /// Copy constructor
+  mCheckBadRun = c.mCheckBadRun;
   mRefMult[0] = c.mRefMult[0];
   mRefMult[1] = c.mRefMult[1];
   mVertZPos[0] = c.mVertZPos[0];
@@ -117,6 +119,7 @@ StHbtBasicEventCut& StHbtBasicEventCut::operator=(const StHbtBasicEventCut& c) {
   /// Assignment operator
   if ( this != &c ) {
     StHbtEventCut::operator=(c);
+    mCheckBadRun = c.mCheckBadRun;
     mRefMult[0] = c.mRefMult[0];
     mRefMult[1] = c.mRefMult[1];
     mVertZPos[0] = c.mVertZPos[0];
@@ -203,7 +206,8 @@ bool StHbtBasicEventCut::pass(const StHbtEvent* ev) {
   const bool passes_ep = ( ( mPsiEP[0] <= ev->eventPlaneAngle() ) &&
 			   ( ( ev->eventPlaneAngle() <= mPsiEP[1] ) ) ) ;
 
-  const bool passes_run = ( isInBadRunList( ev->runNumber(), bad_run_list_7GeV,   n_bad_run_numbers[0] ) ||
+  const bool passes_run = !mCheckBadRun ? true :
+ 			  ( isInBadRunList( ev->runNumber(), bad_run_list_7GeV,   n_bad_run_numbers[0] ) ||
 			    isInBadRunList( ev->runNumber(), bad_run_list_11GeV,  n_bad_run_numbers[1] ) ||
 			    isInBadRunList( ev->runNumber(), bad_run_list_19GeV,  n_bad_run_numbers[2] ) ||
 			    isInBadRunList( ev->runNumber(), bad_run_list_27GeV,  n_bad_run_numbers[3] ) ||

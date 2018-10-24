@@ -32,6 +32,8 @@ class StHbtBasicEventCut : public StHbtEventCut {
   /// Destructor
   virtual ~StHbtBasicEventCut();
   
+  /// Check bad run flag
+  void setCheckBadRun(bool check) { mCheckBadRun = check; }
   /// Set min and max acceptable event multiplicity
   void setEventMult(const int& lo, const int& hi)     { mRefMult[0] = lo; mRefMult[1] = hi; }
   /// Set min and max acceptable vertex z-coordinate
@@ -69,6 +71,8 @@ class StHbtBasicEventCut : public StHbtEventCut {
 
  private:
 
+  /// Check bad run flag. By default it is true (see constructor for more info)
+  bool mCheckBadRun;
   /// Range of multiplicity
   unsigned short mRefMult[2];
   /// Range of z-position of vertex

@@ -520,13 +520,13 @@ double StHbtPair::nominalTpcAverageSeparation() const {
       mTrack1->nominalPosSampleY() && mTrack2->nominalPosSampleY() &&
       mTrack1->nominalPosSampleZ() && mTrack2->nominalPosSampleZ() ) {
     
-    while ( TMath::Abs( mTrack1->nominalPosSampleX()[ipt] ) < 9999. &&
+    while ( ipt < mTrack1->mNumberOfPoints &&
+ 	    TMath::Abs( mTrack1->nominalPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack1->nominalPosSampleY()[ipt] ) < 9999. && 
 	    TMath::Abs( mTrack1->nominalPosSampleZ()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->nominalPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->nominalPosSampleY()[ipt] ) < 9999. && 
-	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. &&
-	    ipt < mTrack1->mNumberOfPoints ) {
+	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. ) {
       
       ipt++;
       AveSep += ( mTrack1->nominalPosSample(ipt) - mTrack2->nominalPosSample(ipt) ).Mag();
@@ -913,13 +913,13 @@ double StHbtPair::tpcAverageSeparationTrackV0Pos() const {
        mTrack1->nominalPosSampleY() && mTrack2->nominalPosSampleY() &&
        mTrack1->nominalPosSampleZ() && mTrack2->nominalPosSampleZ() ) {
     
-    while ( TMath::Abs( mTrack1->nominalPosSampleX()[ipt] ) < 9999. &&
+    while ( ipt < mTrack1->mNumberOfPoints &&
+ 	    TMath::Abs( mTrack1->nominalPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack1->nominalPosSampleY()[ipt] ) < 9999. && 
 	    TMath::Abs( mTrack1->nominalPosSampleZ()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->nominalPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->nominalPosSampleY()[ipt] ) < 9999. && 
-	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. &&
-	    ( ipt<11 ) ) {
+	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. ) {
 
       AveSep += ( mTrack1->nominalPosSample( ipt ) - mTrack2->nominalPosSample( ipt ) ).Mag();
       ipt++;
@@ -941,13 +941,13 @@ double StHbtPair::tpcAverageSeparationTrackV0Neg() const {
        mTrack1->nominalPosSampleY() && mTrack2->tpcV0NegPosSampleY() &&
        mTrack1->nominalPosSampleZ() && mTrack2->tpcV0NegPosSampleZ() ) {
     
-    while ( TMath::Abs( mTrack1->nominalPosSampleX()[ipt] ) < 9999. &&
+    while ( ipt < mTrack1->mNumberOfPoints &&
+ 	    TMath::Abs( mTrack1->nominalPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack1->nominalPosSampleY()[ipt] ) < 9999. && 
 	    TMath::Abs( mTrack1->nominalPosSampleZ()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->nominalPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->nominalPosSampleY()[ipt] ) < 9999. && 
-	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. &&
-	    ( ipt<11 ) ) {
+	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. ) {
       AveSep = ( mTrack1->nominalPosSample( ipt ) - mTrack2->tpcV0NegPosSample( ipt ) ).Mag();
       ipt++;
     }
@@ -968,13 +968,13 @@ double StHbtPair::tpcAverageSeparationV0PosV0Pos() const {
       mTrack1->nominalPosSampleY() && mTrack2->nominalPosSampleY() &&
       mTrack1->nominalPosSampleZ() && mTrack2->nominalPosSampleZ() ) {
     
-    while ( TMath::Abs( mTrack1->nominalPosSampleX()[ipt] ) < 9999. &&
+    while ( ipt < mTrack1->mNumberOfPoints &&
+ 	    TMath::Abs( mTrack1->nominalPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack1->nominalPosSampleY()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack1->nominalPosSampleZ()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->nominalPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->nominalPosSampleY()[ipt] ) < 9999. &&
-	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. &&
-	    ( ipt<11 ) ) {
+	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. ) {
       AveSep += ( mTrack1->nominalPosSample( ipt ) - mTrack2->nominalPosSample( ipt ) ).Mag();
       ipt++;
     }
@@ -994,13 +994,13 @@ double StHbtPair::tpcAverageSeparationV0PosV0Neg() const {
        mTrack1->nominalPosSampleY() && mTrack2->tpcV0NegPosSampleY() &&
        mTrack1->nominalPosSampleZ() && mTrack2->tpcV0NegPosSampleZ() ) {
     
-    while ( TMath::Abs( mTrack1->nominalPosSampleX()[ipt] ) < 9999. &&
+    while ( ipt < mTrack1->mNumberOfPoints &&
+ 	    TMath::Abs( mTrack1->nominalPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack1->nominalPosSampleY()[ipt] ) < 9999. && 
 	    TMath::Abs( mTrack1->nominalPosSampleZ()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->tpcV0NegPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->tpcV0NegPosSampleY()[ipt] ) < 9999. && 
-	    TMath::Abs( mTrack2->tpcV0NegPosSampleZ()[ipt] ) < 9999. &&
-	    ( ipt<11 ) ) {
+	    TMath::Abs( mTrack2->tpcV0NegPosSampleZ()[ipt] ) < 9999. ) {
       AveSep += ( mTrack1->nominalPosSample( ipt ) - mTrack2->tpcV0NegPosSample( ipt ) ).Mag();
       ipt++;
     }
@@ -1020,13 +1020,13 @@ double StHbtPair::tpcAverageSeparationV0NegV0Pos() const {
        mTrack1->tpcV0NegPosSampleY() &&  mTrack2->nominalPosSampleY() &&
        mTrack1->tpcV0NegPosSampleZ() &&  mTrack2->nominalPosSampleZ() ) {
     
-    while ( TMath::Abs( mTrack1->tpcV0NegPosSampleX()[ipt] ) < 9999. &&
+    while ( ipt < mTrack1->mNumberOfPoints &&
+ 	    TMath::Abs( mTrack1->tpcV0NegPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack1->tpcV0NegPosSampleY()[ipt] ) < 9999. && 
 	    TMath::Abs( mTrack1->tpcV0NegPosSampleZ()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->nominalPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->nominalPosSampleY()[ipt] ) < 9999. && 
-	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. &&
-	    ( ipt<11 ) ) {
+	    TMath::Abs( mTrack2->nominalPosSampleZ()[ipt] ) < 9999. ) {
       AveSep += ( mTrack1->tpcV0NegPosSample( ipt ) - mTrack2->nominalPosSample( ipt ) ).Mag();
       ipt++;
     }
@@ -1046,13 +1046,13 @@ double StHbtPair::tpcAverageSeparationV0NegV0Neg() const {
        mTrack1->tpcV0NegPosSampleY() && mTrack2->tpcV0NegPosSampleY() &&
        mTrack1->tpcV0NegPosSampleZ() && mTrack2->tpcV0NegPosSampleZ() ) {
     
-    while ( TMath::Abs( mTrack1->tpcV0NegPosSampleX()[ipt] ) < 9999. &&
+    while ( ipt < mTrack1->mNumberOfPoints &&
+ 	    TMath::Abs( mTrack1->tpcV0NegPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack1->tpcV0NegPosSampleY()[ipt] ) < 9999. && 
 	    TMath::Abs( mTrack1->tpcV0NegPosSampleZ()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->tpcV0NegPosSampleX()[ipt] ) < 9999. &&
 	    TMath::Abs( mTrack2->tpcV0NegPosSampleY()[ipt] ) < 9999. && 
-	    TMath::Abs( mTrack2->tpcV0NegPosSampleZ()[ipt] ) < 9999. &&
-	    ( ipt<11 ) ) {
+	    TMath::Abs( mTrack2->tpcV0NegPosSampleZ()[ipt] ) < 9999. ) {
       AveSep += ( mTrack1->tpcV0NegPosSample(ipt) - mTrack2->tpcV0NegPosSample(ipt) ).Mag();
       ipt++;
     }

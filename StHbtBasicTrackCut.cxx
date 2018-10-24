@@ -418,16 +418,16 @@ StHbtString StHbtBasicTrackCut::report() {
   report += TString::Format( "Particle TPC+TOF nSigmat for pion:\t%E - %E\n", mTnTNSigmaPion[0], mTnTNSigmaPion[1] );
   report += TString::Format( "Particle TPC+TOF nSigmat for kaon:\t%E - %E\n", mTnTNSigmaKaon[0], mTnTNSigmaKaon[1] );
   report += TString::Format( "Particle TPC+TOF nSigmat for proton:\t%E - %E\n", mTnTNSigmaProton[0], mTnTNSigmaProton[1] );
-  if ( mPidSelection == 0 ) {
+  if ( mPidSelection == HbtPID::Electron ) {
     report += TString::Format( "Particle PID to select: electron" );
   }
-  else if( mPidSelection == 1 ) {
+  else if( mPidSelection == HbtPID::Pion ) {
     report += TString::Format( "Particle PID to select: pion" );
   }
-  else if( mPidSelection == 2 ) {
+  else if( mPidSelection == HbtPID::Kaon ) {
     report += TString::Format( "Particle PID to select: kaon" );
   }
-  else if( mPidSelection == 3 ) {
+  else if( mPidSelection == HbtPID::Proton ) {
     report += TString::Format( "Particle PID to select: proton" );
   }
   else {

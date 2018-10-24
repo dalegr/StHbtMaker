@@ -22,6 +22,8 @@
 #pragma link C++ class StHbtMultiTrackCut+;
 #pragma link C++ class StHbtPair+;
 #pragma link C++ class StHbtParticle+;
+#pragma link C++ class StHbtParticleCut+;
+#pragma link C++ class StHbtEventCut+;
 #pragma link C++ class StHbtPicoEventCollectionVectorHideAway+;
 #pragma link C++ class StHbtPicoEvent+;
 #pragma link C++ class StHbtReactionPlaneAnalysis+;

@@ -132,14 +132,14 @@ class StHbtTrack {
   void setP(const float& px, const float& py, const float& pz)
   { mPrimaryPx=px; mPrimaryPy=py; mPrimaryPz=pz; }
   void setP(const TVector3& mom)
-  { mPrimaryPx=momentum().X(); mPrimaryPy=momentum().Y(); mPrimaryPz=momentum().Z(); }
+  { mPrimaryPx=mom.X(); mPrimaryPy=mom.Y(); mPrimaryPz=mom.Z(); }
   void setPx(const float& px)                                 { mPrimaryPx=px; }
   void setPy(const float& py)                                 { mPrimaryPy=py; }
   void setPz(const float& pz)                                 { mPrimaryPz=pz; }
   void setGlobalP(const float& px, const float& py, const float& pz)
   { mGlobalPx=px; mGlobalPy=py; mGlobalPz=pz; }
   void setGlobalP(const TVector3& mom)
-  { mGlobalPx=gMom().X(); mGlobalPy=gMom().Y(); mGlobalPz=gMom().Z(); }
+  { mGlobalPx=mom.X(); mGlobalPy=mom.Y(); mGlobalPz=mom.Z(); }
   void setGlobalPx(const float& px)                           { mGlobalPx=px; }
   void setGlobalPy(const float& py)                           { mGlobalPy=py; }
   void setGlobalPz(const float& pz)                           { mGlobalPz=pz; }

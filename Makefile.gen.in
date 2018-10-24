@@ -1,0 +1,37 @@
+CXX = @CXX@
+
+# Define compiler and preprocessor flags.
+# -D_VANILLA_ROOT_ is needed to avoid StMessMgr confusion
+CXXFLAGS = @CXXFLAGS@
+CXXFLAGS += $(shell root-config --auxcflags) -fPIC -Wall -pipe -std=c++11
+CPPFLAGS = -D_VANILLA_ROOT_ -D__ROOT__ -I. -I$(shell root-config --incdir)
+LIBS = $(shell root-config --libs)
+
+VPATH = @srcdir@
+abs_top_builddir = @abs_top_builddir@
+
+# Output library
+STHBTMAKER = libStHbtMaker.so
+
+# Find all *cxx files in srcdir
+SRC = $(shell find $(VPATH) -name "*.cxx" -printf "%f\n")
+
+all: $(STHBTMAKER)
+
+# $(SRC:.cc=.o) 
+$(STHBTMAKER): $(SRC:.cxx=.o) StHbtMaker_Dict.C
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -shared $^ -o $(STHBTMAKER) $(LIBS)
+
+%.o: %.cxx
+	$(CXX) -fPIC $(CXXFLAGS) $(CPPFLAGS) -c -o $(abs_top_builddir)/$@ $<
+
+StHbtMaker_Dict.C: $(shell find $(VPATH) -name "*.h" ! -name "*LinkDef*" -printf "%f\n")
+	rootcint -f $(abs_top_builddir)/$@ -c -DROOT_CINT $(CPPFLAGS) $^ $(VPATH)/StHbtMakerLinkDef.h
+
+.PHONY: clean distclean
+
+clean:
+	rm -vf *.o StHbtMaker_Dict*
+
+distclean:
+	rm -vf *.o StHbtMaker_Dict* $(STPICODST)

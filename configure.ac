@@ -6,8 +6,8 @@ dnl debug option
 AC_ARG_ENABLE(debug,
               AS_HELP_STRING([--enable-debug],[enable debugging, defult: no]),
               [case "${enableval}" in
-               yes) debug = true  ;;
-               no)  debug = false ;;
+               yes) debug=true  ;;
+               no)  debug=false ;;
                *)   AC_MSG_ERROR([bad value ${enablevalue} for --enable-debug]) ;;
              esac], [debug=false])
 dnl Check dependences

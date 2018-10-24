@@ -1739,8 +1739,8 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 # Check whether --enable-debug was given.
 if test "${enable_debug+set}" = set; then :
   enableval=$enable_debug; case "${enableval}" in
-               yes) debug = true  ;;
-               no)  debug = false ;;
+               yes) debug=true  ;;
+               no)  debug=false ;;
                *)   as_fn_error $? "bad value ${enablevalue} for --enable-debug" "$LINENO" 5 ;;
              esac
 else

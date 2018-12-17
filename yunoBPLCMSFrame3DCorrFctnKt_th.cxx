@@ -7,7 +7,6 @@ ClassImp(yunoBPLCMSFrame3DCorrFctnKt_th)
   //_________________
 yunoBPLCMSFrame3DCorrFctnKt_th::yunoBPLCMSFrame3DCorrFctnKt_th(char *title,
                                                                const int &nbins, const float &QLo, const float &QHi,
-                                                               const int& detector, /*east = 0, west = 1*/
                                                                const int& ktBin, const float& KtLo, const float& KtHi,
                                                                const int& rpBin, const float& rpLo, const float& rpHi) {
 
@@ -23,51 +22,45 @@ yunoBPLCMSFrame3DCorrFctnKt_th::yunoBPLCMSFrame3DCorrFctnKt_th(char *title,
   mRpMax = rpHi;
   mDeltaRp = (mRpMax-mRpMin)/mNumberRp;
 
-  mDetector = detector;
-
+  
   stringstream TitNum,TitDen,TitQinv,TitCurrent;
   TitNum.str("");TitDen.str("");TitQinv.str("");TitCurrent.str("");
   TitNum<<title<<"_Num";
   TitDen<<title<<"_Den";
   TitQinv<<title<<"_Qinv";
 
-  for (int i = 0; i < mNumberKt; i++) {
-    for (int j = 0; j < mNumberRp; j++) {
-      // set up numerator
-      mNumerator[i][j] = new TH3F;
-      // set up denominator
-      mDenominator[i][j] = new TH3F;
-      // set up ave qInv
-      mQinvHisto[i][j] = new TH3F;
-    }
-  }
-  //Histogram loop
+  TString hist_title = TString::Format("%s; q_{out} (GeV/c); q_{side} (GeV/c); q_{long} (GeV/c)", title);
 
+  //Histogram loop
+  
   for(int i=0; i<mNumberKt; i++) {
     for(int j = 0; j < mNumberRp; j++) {
-
+    
       TitCurrent.str("");
       TitCurrent << TitNum.str() << "_kt_" << i << "_rp_" << j;
-      mNumerator[i][j]->SetName(TitCurrent.str().c_str());
-      mNumerator[i][j]->SetTitle(TitCurrent.str().c_str());
-      mNumerator[i][j]->SetBins(nbins,QLo,QHi,nbins,QLo,QHi,nbins,QLo,QHi);
-      mNumerator[i][j]->SetDirectory(0);
+      mNumerator[i][j] = new TH3F(TitCurrent.str().c_str(),
+				  hist_title,
+				  nbins, QLo, QHi,
+				  nbins, QLo, QHi,
+				  nbins, QLo, QHi);
       mNumerator[i][j]->Sumw2();
 
       TitCurrent.str("");
       TitCurrent << TitDen.str()<< "_kt_" << i << "_rp_" << j;
-      mDenominator[i][j]->SetName(TitCurrent.str().c_str());
-      mDenominator[i][j]->SetTitle(TitCurrent.str().c_str());
-      mDenominator[i][j]->SetBins(nbins,QLo,QHi,nbins,QLo,QHi,nbins,QLo,QHi);
-      mDenominator[i][j]->SetDirectory(0);
+      mDenominator[i][j] = new TH3F(TitCurrent.str().c_str(),
+				    hist_title,
+				    nbins, QLo, QHi,
+				    nbins, QLo, QHi,
+				    nbins, QLo, QHi);
       mDenominator[i][j]->Sumw2();
 
       TitCurrent.str("");
       TitCurrent << TitQinv.str()<< "_kt_" << i << "_rp_" << j;
-      mQinvHisto[i][j]->SetName(TitCurrent.str().c_str());
-      mQinvHisto[i][j]->SetTitle(TitCurrent.str().c_str());
-      mQinvHisto[i][j]->SetBins(nbins,QLo,QHi,nbins,QLo,QHi,nbins,QLo,QHi);
-      mQinvHisto[i][j]->SetDirectory(0);
+      mQinvHisto[i][j] = new TH3F(TitCurrent.str().c_str(),
+				  hist_title,
+				  nbins, QLo, QHi,
+				  nbins, QLo, QHi,
+				  nbins, QLo, QHi);
       mQinvHisto[i][j]->Sumw2();
     }
   }

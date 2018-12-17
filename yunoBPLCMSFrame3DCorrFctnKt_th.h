@@ -20,7 +20,6 @@ class yunoBPLCMSFrame3DCorrFctnKt_th : public StHbtCorrFctn {
  public:
   yunoBPLCMSFrame3DCorrFctnKt_th(char *title, 
                                  const int &nbins, const float &Qlo, const float &Qhi,
-                                 const int &detector, /*east = 0, west = 1*/
                                  const int& ktBin=10, const float& KtLo=0.05, const float& KtHi=1.05,
                                  const int& rpBin=12, const float& rpLo=0, const float& rpHi=2*PI);
 

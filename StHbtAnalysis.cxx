@@ -150,7 +150,7 @@ StHbtAnalysis::StHbtAnalysis() : mPicoEventCollectionVectorHideAway(nullptr),
 				 mEventCut(nullptr), mFirstParticleCut(nullptr),
 				 mSecondParticleCut(nullptr), mMixingBuffer(nullptr),
 				 mPicoEvent(nullptr), mNumEventsToMix(0),mNeventsProcessed(0),
-				 mMinSizePartCollection(0), mVerbose(true) {
+				 mMinSizePartCollection(0), mVerbose(false) {
   mCorrFctnCollection = new StHbtCorrFctnCollection;
   mMixingBuffer = new StHbtPicoEventCollection;
 }

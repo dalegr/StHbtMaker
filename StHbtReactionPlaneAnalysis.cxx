@@ -34,16 +34,18 @@ StHbtReactionPlaneAnalysis::StHbtReactionPlaneAnalysis( unsigned int binsVertex,
 							unsigned int binsMult,
 							double minMult,
 							double maxMult,
-							unsigned short binsRP ) :
+							unsigned short binsRP,
+							double minRP,
+							double maxRP) :
   StHbtAnalysis(),
-  mVertexZBins( binsVertex ),
-  mOverFlowVertexZ(0),
-  mUnderFlowVertexZ(0),
-  mMultBins( binsMult ),
-  mOverFlowMult( 0 ),
-  mUnderFlowMult( 0 ),
-  mRPBins( binsRP ),
-  mCurrentRP( 0 ) {
+  mVertexZBins(      binsVertex ),
+  mOverFlowVertexZ(  0),
+  mUnderFlowVertexZ( 0),
+  mMultBins(         binsMult ),
+  mOverFlowMult(     0 ),
+  mUnderFlowMult(    0 ),
+  mRPBins(           binsRP ),
+  mCurrentRP(        0 ) {
 
   /// Constructor
   
@@ -51,6 +53,8 @@ StHbtReactionPlaneAnalysis::StHbtReactionPlaneAnalysis( unsigned int binsVertex,
   mVertexZ[1] = maxVertex;
   mMult[0] = minMult;
   mMult[1] = maxMult;
+  mRP[0] = minRP;
+  mRP[1] = maxRP;
 
   /// Print out warnings, will help user to fix these bugs
   if ( minVertex >= maxVertex ) {
@@ -79,7 +83,7 @@ StHbtReactionPlaneAnalysis::StHbtReactionPlaneAnalysis( unsigned int binsVertex,
   mPicoEventCollectionVectorHideAway =
     new StHbtPicoEventCollectionVectorHideAway( mVertexZBins, mVertexZ[0], mVertexZ[1],
 						mMultBins, mMult[0], mMult[1],
-						mRPBins, 0., TMath::Pi() );
+						mRPBins, mRP[0], mRP[1]);
 };
 
 //_________________
@@ -99,6 +103,8 @@ StHbtReactionPlaneAnalysis::StHbtReactionPlaneAnalysis(const StHbtReactionPlaneA
   mVertexZ[1] = a.mVertexZ[1];
   mMult[0] = a.mMult[0];
   mMult[1] = a.mMult[1];
+  mRP[0] = a.mRP[0];
+  mRP[1] = a.mRP[1];
   
   if (mMixingBuffer) {
     delete mMixingBuffer;
@@ -112,7 +118,7 @@ StHbtReactionPlaneAnalysis::StHbtReactionPlaneAnalysis(const StHbtReactionPlaneA
   mPicoEventCollectionVectorHideAway =
     new StHbtPicoEventCollectionVectorHideAway( mVertexZBins, mVertexZ[0], mVertexZ[1],
 						mMultBins, mMult[0], mMult[1],
-						mRPBins, 0., TMath::Pi() );
+						mRPBins, mRP[0], mRP[1]);
 
   if (mVerbose) {
     std::cout << "StHbtReactionPlaneAnalysis::StHbtReactionPlaneAnalysis(const StHbtReactionPlaneAnalysis& a) - "
@@ -153,7 +159,7 @@ StHbtReactionPlaneAnalysis& StHbtReactionPlaneAnalysis::operator=(const StHbtRea
     mPicoEventCollectionVectorHideAway =
       new StHbtPicoEventCollectionVectorHideAway( mVertexZBins, mVertexZ[0], mVertexZ[1],
 						  mMultBins, mMult[0], mMult[1],
-						  mRPBins, 0., TMath::Pi() );
+						  mRPBins, mRP[0], mRP[1]);
   } // if ( this != &a )
 
   return *this;
@@ -199,7 +205,7 @@ void StHbtReactionPlaneAnalysis::processEvent(const StHbtEvent* hbtEvent) {
   mCurrentRP     = hbtEvent->eventPlaneAngle();
   
   if ( mCurrentRP < -990 ) {
-    std::cout << "No event plane!" << std::endl;
+    //  std::cout << "Event planevalue < 990!" << std::endl;
     return;
   }
   if ( mCurrentRP < 0.0 ) {

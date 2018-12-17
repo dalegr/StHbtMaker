@@ -12,9 +12,14 @@
 #pragma link C++ class StHbtPairCut+;
 #pragma link C++ class StHbtCorrFctn+;
 #pragma link C++ class StHbtCorrFctn3DLCMSSym+;
+#pragma link C++ class yunoBPLCMSFrame3DCorrFctnKt+;
+#pragma link C++ class yunoBPLCMSFrame3DCorrFctnKt_th+;
 #pragma link C++ class StHbtCoulomb+;
 #pragma link C++ class StHbtCutMonitor+;
 #pragma link C++ class StHbtCutMonitorHandler+;
+#pragma link C++ class fxtEventCutMonitor+;
+#pragma link C++ class fxtTrackCutMonitor+;
+#pragma link C++ class fxtPairCutMonitor+;
 #pragma link C++ class StHbtEvent+;
 #pragma link C++ class StHbtEventReader+;
 #pragma link C++ class StHbtBasicEventCut+;

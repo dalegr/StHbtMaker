@@ -37,8 +37,8 @@ StHbtBasicTrackCut::StHbtBasicTrackCut():
   mPt[1] = 2.;
   mP[0] = 0.1;
   mP[1] = 2.;
-  mRapidity[0] = -1.1;
-  mRapidity[1] = 1.1;
+  mRapidity[0] = -1e6;
+  mRapidity[1] = 1e6;
   mEta[0] = -1.;
   mEta[1] = 1.;
   mDCA[0] = -0.1;

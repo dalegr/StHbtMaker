@@ -11,7 +11,7 @@ StHbtBasicPairCut::StHbtBasicPairCut() {
   mPt[0] = -1e9; mPt[1]= +1e9;
   mOpeningAngle[0] = -1e9; mOpeningAngle[1]= +1e9;
   mRapidity[0] = -1e9; mRapidity[1]= +1e9;
-  mEta[0] = -3.5; mEta[1]= 3.5;
+  mEta[0] = -1e9; mEta[1]= 1e9;
   mQinv[0] = -0.01; mQinv[1]= 1e9;
   mMinv[0] = -1e9; mMinv[1]= +1e9;
   mEntranceSeparation[0] = -1e9; mEntranceSeparation[1]= +1e9;
@@ -102,10 +102,12 @@ bool StHbtBasicPairCut::pass(const StHbtPair* pair){
 		     (pair->pT() <= mPt[1]) &&
 		     (pair->openingAngle() >= mOpeningAngle[0]) && 
 		     (pair->openingAngle() <= mOpeningAngle[1]) &&
+                     /*
 		     (pair->rap() >= mRapidity[0]) && 
 		     (pair->rap() <= mRapidity[1]) && 
 		     (pair->eta() >= mEta[0]) && 
 		     (pair->eta() <= mEta[1]) &&
+                     */
 		     (fabs(pair->qInv()) >= mQinv[0]) && 
 		     (fabs(pair->qInv()) <= mQinv[1]) &&
 		     (fabs(pair->mInv()) >= mMinv[0]) && 

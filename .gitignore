@@ -1,0 +1,4 @@
+*.o
+*.so
+StHbtMaker_Dict.C
+StHbtMaker_Dict_rdict.pcm

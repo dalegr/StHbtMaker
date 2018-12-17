@@ -45,6 +45,7 @@ class StHbtBasicTrackCut : public StHbtTrackCut {
   void setAntiSplit(const float& lo)                         { setNHitsFitOverNHitsPoss( lo ); }
   /// Set min and max ranges of transverse momentum
   void setPt(const float& lo, const float& hi)               { mPt[0] = lo; mPt[1] = hi; }
+  void setP(const float& lo, const float& hi)               { mP[0] = lo; mP[1] = hi; }
   void setTranverseMomentum(const float& lo, const float& hi){ setPt( lo , hi ); }
   /// Set min and max ranges of rapidity
   void setRapidity(const float& lo, const float& hi)         { mRapidity[0] = lo; mRapidity[1] = hi; }

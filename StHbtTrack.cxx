@@ -105,40 +105,11 @@ StHbtTrack& StHbtTrack::operator=(const StHbtTrack& trk) {
     mPrimaryVertexZ = trk.mPrimaryVertexZ;
     mBField = trk.mBField;
 
-    if ( trk.mXfr ) {
-      if( !mXfr ) {
-	mXfr = new float;
-      }
-      mXfr = trk.mXfr;
-    }
-
-    if ( trk.mYfr ) {
-      if( !mYfr ) {
-	mYfr = new float;
-      }
-      mYfr = trk.mYfr;
-    }
-
-    if ( trk.mZfr ) {
-      if( !mZfr ) {
-	mZfr = new float;
-      }
-      mZfr = trk.mZfr;
-    }
-
-    if ( trk.mTfr ) {
-      if( !mTfr ) {
-	mTfr = new float;
-      }
-      mTfr = trk.mTfr;
-    }
-
-    if (trk.mPdgId) {
-      if (!mPdgId) {
-	mPdgId = new int;
-      }
-      mPdgId = trk.mPdgId;
-    }
+    mXfr = trk.mXfr;
+    mYfr = trk.mYfr;
+    mZfr = trk.mZfr;
+    mTfr = trk.mTfr;
+    mPdgId = trk.mPdgId;
 
     if(mHiddenInfo) delete mHiddenInfo;
     mHiddenInfo = trk.validHiddenInfo() ? trk.getHiddenInfo()->clone() : nullptr;
@@ -150,11 +121,6 @@ StHbtTrack& StHbtTrack::operator=(const StHbtTrack& trk) {
 //_________________
 StHbtTrack::~StHbtTrack() {
   if (mHiddenInfo) delete mHiddenInfo;
-  if (mXfr) delete mXfr;
-  if (mYfr) delete mYfr;
-  if (mZfr) delete mZfr;
-  if (mTfr) delete mTfr;
-  if (mPdgId) delete mPdgId;
 }
 
 //_________________
@@ -169,43 +135,43 @@ float StHbtTrack::massSqr() const {
 //_________________
 void StHbtTrack::setNSigmaElectron(const float& ns) {
   mNSigmaElectron = ( TMath::Abs(ns * 1000.) > std::numeric_limits<short>::max() ?
-		      ( (ns>0) ? std::numeric_limits<short>::max() : std::numeric_limits<short>::min() ) :
-		      (short)( ns * 1000.) );
+                     ( (ns>0) ? std::numeric_limits<short>::max() : std::numeric_limits<short>::min() ) :
+                     (short)( ns * 1000.) );
 }
 
 //_________________
 void StHbtTrack::setNSigmaPion(const float& ns) {
   mNSigmaPion = ( TMath::Abs(ns * 1000.) > std::numeric_limits<short>::max() ?
-		  ( (ns>0) ? std::numeric_limits<short>::max() : std::numeric_limits<short>::min() ) :
-		  (short)( ns * 1000.) );
+                 ( (ns>0) ? std::numeric_limits<short>::max() : std::numeric_limits<short>::min() ) :
+                 (short)( ns * 1000.) );
 }
 
 //_________________
 void StHbtTrack::setNSigmaKaon(const float& ns) {
   mNSigmaKaon = ( TMath::Abs(ns * 1000.) > std::numeric_limits<short>::max() ?
-		  ( (ns>0) ? std::numeric_limits<short>::max() : std::numeric_limits<short>::min() ) :
-		  (short)( ns * 1000.) );
+                 ( (ns>0) ? std::numeric_limits<short>::max() : std::numeric_limits<short>::min() ) :
+                 (short)( ns * 1000.) );
 }
 
 //_________________
 void StHbtTrack::setNSigmaProton(const float& ns) {
   mNSigmaProton = ( TMath::Abs(ns * 1000.) > std::numeric_limits<short>::max() ?
-		    ( (ns>0) ? std::numeric_limits<short>::max() : std::numeric_limits<short>::min() ) :
-		    (short)( ns * 1000.) );
+                   ( (ns>0) ? std::numeric_limits<short>::max() : std::numeric_limits<short>::min() ) :
+                   (short)( ns * 1000.) );
 }
 
 //_________________
 void StHbtTrack::setChi2(const float& x) {
   mChi2 = ( ( x * 1000.) > std::numeric_limits<unsigned short>::max() ?
-	    std::numeric_limits<unsigned short>::max() :
-	    (unsigned short)( x * 1000.) );
+           std::numeric_limits<unsigned short>::max() :
+           (unsigned short)( x * 1000.) );
 }
 
 //_________________
 void StHbtTrack::setPidProbElectron(const float& prob) {
   mPidProbElectron = ( (prob * 10000.) > std::numeric_limits<unsigned short>::max() ?
-		       std::numeric_limits<unsigned short>::max() :
-		       (unsigned short)(prob * 10000.) );
+                      std::numeric_limits<unsigned short>::max() :
+                      (unsigned short)(prob * 10000.) );
 }
 
 //_________________
@@ -215,8 +181,8 @@ void StHbtTrack::setPidProbPion(const float& prob) {
   }
   else {
     mPidProbPion = ( (prob * 10000.) > std::numeric_limits<unsigned short>::max() ?
-		     std::numeric_limits<unsigned short>::max() :
-		     (unsigned short)(prob * 10000.) );
+                    std::numeric_limits<unsigned short>::max() :
+                    (unsigned short)(prob * 10000.) );
   }
 }
 
@@ -227,8 +193,8 @@ void StHbtTrack::setPidProbKaon(const float& prob) {
   }
   else {
     mPidProbKaon = ( (prob * 10000.) > std::numeric_limits<unsigned short>::max() ?
-		     std::numeric_limits<unsigned short>::max() :
-		     (unsigned short)(prob * 10000.) );
+                    std::numeric_limits<unsigned short>::max() :
+                    (unsigned short)(prob * 10000.) );
   }
 }
 
@@ -239,8 +205,8 @@ void StHbtTrack::setPidProbProton(const float& prob) {
   }
   else {
     mPidProbProton = ( (prob * 10000.) > std::numeric_limits<unsigned short>::max() ?
-		       std::numeric_limits<unsigned short>::max() :
-		       (unsigned short)(prob * 10000.) );
+                      std::numeric_limits<unsigned short>::max() :
+                      (unsigned short)(prob * 10000.) );
   }
 }
 
@@ -251,73 +217,58 @@ void StHbtTrack::setDedx(const double& dEdx) {
   }
   else {
     mDedx = ( (dEdx * 1e9) > std::numeric_limits<unsigned short>::max() ?
-	      std::numeric_limits<unsigned short>::max() :
-	      (unsigned short)(dEdx * 1e9) );
+             std::numeric_limits<unsigned short>::max() :
+             (unsigned short)(dEdx * 1e9) );
   }
 }
 
 //_________________
 void StHbtTrack::setBeta(const float& beta) {
   if( beta <= 0 ) {
-    mTofBeta = 0;
+    mTofBeta = -666;
   }
   else {
     mTofBeta = ( (beta * 20000.) > std::numeric_limits<unsigned short>::max() ?
-		 std::numeric_limits<unsigned short>::max() :
-		 (unsigned short)(beta * 20000.) );
+                std::numeric_limits<unsigned short>::max() :
+                (unsigned short)(beta * 20000.) );
   }
 }
 
 //_________________
 StHbtPhysicalHelix StHbtTrack::helix() const {
   return StHbtPhysicalHelix( pMom(), primaryVertex(),
-			     mBField * kilogauss,
-			     static_cast<float>( charge() ) );
+                            mBField * kilogauss,
+                            static_cast<float>( charge() ) );
 }
 
 //_________________
 StHbtPhysicalHelix StHbtTrack::gHelix() const {
   return StHbtPhysicalHelix( gMom(), origin(),
-			     mBField * kilogauss,
-			     static_cast<float>( charge() ) );
+                            mBField * kilogauss,
+                            static_cast<float>( charge() ) );
 }
 
 //_________________
 void StHbtTrack::setEmissionPointX(const float& x) {
-  if( !mXfr ) {
-    mXfr = new float;
-  }
-  *mXfr = x;
+  mXfr = x;
 }
 
 //_________________
 void StHbtTrack::setEmissionPointY(const float& y) {
-  if( !mYfr ) {
-    mYfr = new float;
-  }
-  *mYfr = y;
+  mYfr = y;
 }
 
 //_________________
 void StHbtTrack::setEmissionPointZ(const float& z) {
-  if( !mZfr ) {
-    mZfr = new float;
-  }
-  *mZfr = z;
+  mZfr = z;
 }
 
 //_________________
 void StHbtTrack::setEmissionPointT(const float& t) {
-  if( !mTfr ) {
-    mTfr = new float;
-  }
-  *mTfr = t;
+  mTfr = t;
 }
 
 //_________________
 void StHbtTrack::setPdgCode(const int& id) {
-  if( !mPdgId ) {
-    mPdgId = new int;
-  }
-  *mPdgId = id;
+  mPdgId = id;
 }

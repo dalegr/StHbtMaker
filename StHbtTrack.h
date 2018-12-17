@@ -89,18 +89,18 @@ class StHbtTrack {
   float gDCAz() const              { return gDCA().Z(); }
   float chi2() const               { return (float)mChi2 * 0.001; }
   unsigned int topologyMap(const unsigned int& word) const { return mMap[word]; }
-  float beta() const               { return ( isTofTrack() ) ? (float)mTofBeta / 20000 : -999.; }
-  bool  isTofTrack() const         { return ( mTofBeta>0 ) ? false : true; }
+  float beta() const               { return (float)mTofBeta/2e4; }
+  bool  isTofTrack() const         { return ( mTofBeta<0 ) ? false : true; }
   float invBeta() const            { return ( isTofTrack() ) ? 1./beta() : -999.; }
   float invBeta2() const           { return ( isTofTrack() ) ? invBeta()*invBeta() : -999; }
   float massSqr() const;
   TLorentzVector emissionPoint() const
   { return TLorentzVector( emissionPointX(), emissionPointY(), emissionPointZ(), emissionPointT() ); }
-  float emissionPointX() const     { return (mXfr) ? *mXfr : 0.; }
-  float emissionPointY() const     { return (mYfr) ? *mYfr : 0.; }
-  float emissionPointZ() const     { return (mZfr) ? *mZfr : 0.; }
-  float emissionPointT() const     { return (mTfr) ? *mTfr : -1.; }
-  int pdgId() const                { return (mPdgId) ? *mPdgId : 0.; }
+  float emissionPointX() const     { return mXfr; }
+  float emissionPointY() const     { return mYfr; }
+  float emissionPointZ() const     { return mZfr; }
+  float emissionPointT() const     { return mTfr; }
+  int pdgId() const                { return mPdgId; }
   int pdgCode() const              { return pdgId(); }
 
   StHbtPhysicalHelix helix() const;
@@ -156,7 +156,7 @@ class StHbtTrack {
   void setBeta(const float &beta);
   // Freeze-out parameters (for the simulation only)
   void setEmissionPoint(const TLorentzVector& point)
-  { *mXfr=point.X(); *mYfr=point.Y(); *mZfr=point.Z(); *mTfr=point.T(); }
+  { mXfr=point.X(); mYfr=point.Y(); mZfr=point.Z(); mTfr=point.T(); }
   void setEmissionPointX(const float &x);
   void setEmissionPointY(const float &y);
   void setEmissionPointZ(const float &z);
@@ -225,11 +225,11 @@ class StHbtTrack {
   float mBField;
 
   /// Particle positions at freeze-out (duplicates hidden info and must be removed)
-  float *mXfr;
-  float *mYfr;
-  float *mZfr;
-  float *mTfr;
-  int   *mPdgId;
+  float mXfr;
+  float mYfr;
+  float mZfr;
+  float mTfr;
+  int   mPdgId;
 
   /* Th stuff */
   // Fab private : add mutable

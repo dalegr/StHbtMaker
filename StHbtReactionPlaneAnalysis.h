@@ -23,7 +23,7 @@ class StHbtReactionPlaneAnalysis : public StHbtAnalysis {
   /// Default constructor
   StHbtReactionPlaneAnalysis( unsigned int binsVertex=10, double minVertex=-100., double maxVertex=+100.,
 			      unsigned int binsMult=10, double minMult=-1.e9, double maxMult=+1.e9,
-			      unsigned short binsRP=10 );
+			      unsigned short binsRP=10, double minRP=-1.e9, double maxRP=+1.e9);
   /// Copy constructor
   StHbtReactionPlaneAnalysis(const StHbtReactionPlaneAnalysis& copy);
   /// Assignment operator
@@ -71,6 +71,7 @@ protected:
 
   /// Number of reaction plane angle orientation bins
   unsigned short mRPBins;
+  double mRP[2];
   /// Reaction plane angle of the current event
   double mCurrentRP;
   
